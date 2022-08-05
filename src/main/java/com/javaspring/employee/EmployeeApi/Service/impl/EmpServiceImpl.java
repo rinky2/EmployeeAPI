@@ -87,7 +87,14 @@ public class EmpServiceImpl implements EmpService {
 
         Optional<EmpDAO> db = empRepository.findById(id);
         if (db.isPresent()) {
-            EmpDAO emp = new EmpDAO(empDTO);
+            EmpDAO emp = db.get();
+            if(empDTO.getName()!= null)
+                emp.setName(empDTO.getName());
+            if(empDTO.getEmail()!= null)
+                emp.setEmail(empDTO.getEmail());
+            if(empDTO.getSalary()!= ' ')
+                emp.setSalary(empDTO.getSalary());
+
             empRepository.save(emp);
             logger.info("Employee Data updated !!!");
         } else {
