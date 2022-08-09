@@ -23,12 +23,13 @@ public class EmpDAO {
     private String email;
     private int salary;
 
+
     public EmpDAO(EmpDTO dto) {
         //Converting from Entity to DTO
         this.id = dto.getId();
         this.name = dto.getName();
         this.email = dto.getEmail();
-        this.salary = dto.getSalary();
+
     }
 
 }

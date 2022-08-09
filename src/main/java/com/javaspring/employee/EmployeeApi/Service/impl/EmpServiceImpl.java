@@ -2,6 +2,7 @@ package com.javaspring.employee.EmployeeApi.Service.impl;
 
 import com.javaspring.employee.EmployeeApi.Model.EmpDAO;
 import com.javaspring.employee.EmployeeApi.Model.EmpDTO;
+import com.javaspring.employee.EmployeeApi.Model.IdNameEmail;
 import com.javaspring.employee.EmployeeApi.Repository.EmpRepository;
 import com.javaspring.employee.EmployeeApi.Service.EmpService;
 import org.slf4j.Logger;
@@ -25,22 +26,23 @@ public class EmpServiceImpl implements EmpService {
 
     public static Logger logger = LoggerFactory.getLogger(EmpServiceImpl.class);
 
-    public List<EmpDTO> getAll() {
 
+    public List<IdNameEmail> getAll() {
         List<EmpDAO> empList = (List<EmpDAO>) empRepository.findAll();
-        List<EmpDTO> empdto = new ArrayList();
+        //List<EmpDTO> empdto = new ArrayList();
+        List<IdNameEmail> emp1 = new ArrayList();
         logger.info("empList:{}",empList);
         if(!empList.isEmpty()){
             for (int i = 0; i < empList.size(); i++) {
                 EmpDAO empdb = empList.get(i);
-                EmpDTO dto = new EmpDTO(empdb);
-                empdto.add(dto);
+                IdNameEmail e1 = new IdNameEmail(empdb);
+                emp1.add(e1);
             }
         }
         else{
             logger.error("No Employee Data present!!");
         }
-        return empdto;
+        return emp1;
     }
 
     public Optional<EmpDAO> getData(int id) {
@@ -92,8 +94,8 @@ public class EmpServiceImpl implements EmpService {
                 emp.setName(empDTO.getName());
             if(empDTO.getEmail()!= null)
                 emp.setEmail(empDTO.getEmail());
-            if(empDTO.getSalary()!= ' ')
-                emp.setSalary(empDTO.getSalary());
+//            if(empDTO.getSalary()!= ' ')
+//                emp.setSalary(empDTO.getSalary());
 
             empRepository.save(emp);
             logger.info("Employee Data updated !!!");
@@ -117,4 +119,6 @@ public class EmpServiceImpl implements EmpService {
             throw new RuntimeException( "EmpID Not Found!!!!");
         }
     }
+
+
 }

@@ -3,6 +3,7 @@ package com.javaspring.employee.EmployeeApi.Controller;
 import com.javaspring.employee.EmployeeApi.Model.CustomError;
 import com.javaspring.employee.EmployeeApi.Model.EmpDAO;
 import com.javaspring.employee.EmployeeApi.Model.EmpDTO;
+import com.javaspring.employee.EmployeeApi.Model.IdNameEmail;
 import com.javaspring.employee.EmployeeApi.Service.impl.EmpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -30,7 +31,7 @@ public class EmpController {
     }
 
     @RequestMapping("/emp") //will be converted to json by spring mvc
-    public List<EmpDTO> getAll()
+    public List<IdNameEmail> getAll()
     {
         return empServiceImpl.getAll();
     }

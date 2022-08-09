@@ -2,13 +2,14 @@ package com.javaspring.employee.EmployeeApi.Service;
 
 import com.javaspring.employee.EmployeeApi.Model.EmpDAO;
 import com.javaspring.employee.EmployeeApi.Model.EmpDTO;
+import com.javaspring.employee.EmployeeApi.Model.IdNameEmail;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface EmpService {
 
-    List<EmpDTO> getAll();
+    List<IdNameEmail> getAll();
 
 
     Optional<EmpDAO> getData(int id);
